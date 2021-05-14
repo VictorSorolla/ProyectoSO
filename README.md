@@ -6,3 +6,4 @@ Versión 2 generada por Óscar Planas
 Version 2 verificada por Victor Sorolla
 Version 2 comunicada por Jaskirat Singh --> https://www.youtube.com/watch?v=R3uwV3J5Ntg&ab_channel=JaskiratSingh
 Versión 3 generada por Jaskirat Singh 
+Versión 3 verificada por Óscar Planas 
