@@ -38,7 +38,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.invitarBTN = new System.Windows.Forms.Button();
+            this.invitadosBox = new System.Windows.Forms.TextBox();
+            this.matriz = new System.Windows.Forms.DataGridView();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.chatBTN = new System.Windows.Forms.Button();
+            this.chatBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.matriz)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -63,10 +70,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(740, 217);
+            this.button1.Location = new System.Drawing.Point(62, 496);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 38);
+            this.button1.Size = new System.Drawing.Size(211, 65);
             this.button1.TabIndex = 4;
             this.button1.Text = "conectar";
             this.button1.UseVisualStyleBackColor = true;
@@ -82,18 +89,18 @@
             this.groupBox1.Controls.Add(this.Password);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.Username);
-            this.groupBox1.Location = new System.Drawing.Point(89, 111);
+            this.groupBox1.Location = new System.Drawing.Point(25, 33);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(607, 417);
+            this.groupBox1.Size = new System.Drawing.Size(608, 434);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Peticion";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 184);
+            this.button2.Location = new System.Drawing.Point(217, 184);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 94);
             this.button2.TabIndex = 13;
@@ -103,7 +110,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(406, 184);
+            this.button5.Location = new System.Drawing.Point(421, 184);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(165, 94);
             this.button5.TabIndex = 12;
@@ -113,7 +120,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(212, 184);
+            this.button4.Location = new System.Drawing.Point(21, 184);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(165, 94);
             this.button4.TabIndex = 10;
@@ -142,7 +149,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(740, 283);
+            this.button3.Location = new System.Drawing.Point(361, 496);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(196, 65);
@@ -151,21 +158,84 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // invitarBTN
+            // 
+            this.invitarBTN.Location = new System.Drawing.Point(727, 354);
+            this.invitarBTN.Name = "invitarBTN";
+            this.invitarBTN.Size = new System.Drawing.Size(92, 67);
+            this.invitarBTN.TabIndex = 25;
+            this.invitarBTN.Text = "Invitar";
+            this.invitarBTN.UseVisualStyleBackColor = true;
+            this.invitarBTN.Click += new System.EventHandler(this.invitarBTN_Click);
+            // 
+            // invitadosBox
+            // 
+            this.invitadosBox.Location = new System.Drawing.Point(714, 193);
+            this.invitadosBox.Margin = new System.Windows.Forms.Padding(4);
+            this.invitadosBox.Multiline = true;
+            this.invitadosBox.Name = "invitadosBox";
+            this.invitadosBox.Size = new System.Drawing.Size(138, 129);
+            this.invitadosBox.TabIndex = 26;
+            // 
+            // matriz
+            // 
+            this.matriz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.matriz.Location = new System.Drawing.Point(671, 33);
+            this.matriz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.matriz.Name = "matriz";
+            this.matriz.Size = new System.Drawing.Size(231, 129);
+            this.matriz.TabIndex = 27;
+            this.matriz.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.matriz_CellClick);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(940, 111);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(314, 260);
+            this.listBox1.TabIndex = 28;
+            // 
+            // chatBTN
+            // 
+            this.chatBTN.Location = new System.Drawing.Point(1052, 439);
+            this.chatBTN.Name = "chatBTN";
+            this.chatBTN.Size = new System.Drawing.Size(108, 28);
+            this.chatBTN.TabIndex = 29;
+            this.chatBTN.Text = "Enviar ";
+            this.chatBTN.UseVisualStyleBackColor = true;
+            this.chatBTN.Click += new System.EventHandler(this.chatBTN_Click);
+            // 
+            // chatBox
+            // 
+            this.chatBox.Location = new System.Drawing.Point(940, 399);
+            this.chatBox.Name = "chatBox";
+            this.chatBox.Size = new System.Drawing.Size(314, 22);
+            this.chatBox.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 692);
+            this.ClientSize = new System.Drawing.Size(1297, 590);
+            this.Controls.Add(this.chatBox);
+            this.Controls.Add(this.chatBTN);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.matriz);
+            this.Controls.Add(this.invitadosBox);
+            this.Controls.Add(this.invitarBTN);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "tex";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.matriz)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -181,6 +251,12 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button invitarBTN;
+        private System.Windows.Forms.TextBox invitadosBox;
+        private System.Windows.Forms.DataGridView matriz;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button chatBTN;
+        private System.Windows.Forms.TextBox chatBox;
     }
 }
 

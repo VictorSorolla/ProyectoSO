@@ -34,7 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.invitadosBox = new System.Windows.Forms.TextBox();
+            this.invitarBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.matriz)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             this.matriz.Name = "matriz";
             this.matriz.Size = new System.Drawing.Size(231, 129);
             this.matriz.TabIndex = 17;
+            this.matriz.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.matriz_CellClick);
             // 
             // panel1
             // 
@@ -84,14 +86,24 @@
             this.label3.Size = new System.Drawing.Size(180, 71);
             this.label3.TabIndex = 21;
             // 
-            // label4
+            // invitadosBox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(485, 374);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "label4";
+            this.invitadosBox.Location = new System.Drawing.Point(487, 324);
+            this.invitadosBox.Margin = new System.Windows.Forms.Padding(4);
+            this.invitadosBox.Multiline = true;
+            this.invitadosBox.Name = "invitadosBox";
+            this.invitadosBox.Size = new System.Drawing.Size(132, 122);
+            this.invitadosBox.TabIndex = 23;
+            // 
+            // invitarBTN
+            // 
+            this.invitarBTN.Location = new System.Drawing.Point(316, 523);
+            this.invitarBTN.Name = "invitarBTN";
+            this.invitarBTN.Size = new System.Drawing.Size(75, 23);
+            this.invitarBTN.TabIndex = 24;
+            this.invitarBTN.Text = "Invitar";
+            this.invitarBTN.UseVisualStyleBackColor = true;
+            this.invitarBTN.Click += new System.EventHandler(this.invitarBTN_Click);
             // 
             // Form3
             // 
@@ -99,7 +111,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(760, 673);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.invitarBTN);
+            this.Controls.Add(this.invitadosBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -122,6 +135,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox invitadosBox;
+        private System.Windows.Forms.Button invitarBTN;
     }
 }
