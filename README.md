@@ -9,3 +9,7 @@ Versión 3 generada por Jaskirat Singh
 Versión 3 verificada por Óscar Planas
 Version 3 comunicada por Victor Sorolla --> https://youtu.be/UnddbN6uqec
 Version 4 generada por Victor Sorolla 
+Versión 4 verificada por Jaskirat Singh 
+Versión 4 comunicada por Óscar Planas --> https://youtu.be/o7zhC-Hgf2U
+Version 5 generada por Óscar Planas
+Version 5 verificada por Victor Sorolla

@@ -9,24 +9,31 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 
+
+
 namespace WindowsFormsApplication1
 {
     public partial class Form3 : Form
     {
+        List<string> invitados = new List<string>();
+
         public Socket server;
         public string mensaje;
-        List<string> invitados = new List<string>();
+        string message;
+
 
         public Form3()
         {
             InitializeComponent();
         }
 
+       
         private void Form3_Load(object sender, EventArgs e)
         {
             // Recibimos la respuesta del servidor
             string[] trozos = mensaje.Split('/');
             int codigo = Convert.ToInt32(trozos[0]);
+
             //mensaje = trozos[0].Split('\0')[0];
             //mensaje = trozos[1].Split('/')[0];
             //mensaje = trozos[1];
@@ -44,7 +51,7 @@ namespace WindowsFormsApplication1
             while (i < codigo)
             {
                 string[] nombres = new string[10];
-                nombres[i] = trozos[i+1];
+                nombres[i] = trozos[i + 1];
 
 
                 matriz.Rows[i].Cells[0].Value = nombres[i];
@@ -57,7 +64,6 @@ namespace WindowsFormsApplication1
         }
 
  
-
         private void label1_Click(object sender, EventArgs e)
         {
             Form4 f4 = new Form4();
@@ -66,17 +72,31 @@ namespace WindowsFormsApplication1
 
         private void matriz_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int fila = e.RowIndex;
+            
+            //int fila = e.RowIndex;
+            //int columna = e.ColumnIndex;
             invitadosBox.AppendText(Convert.ToString(matriz.CurrentRow.Cells[0].Value) + Environment.NewLine);
             invitados.Add(Convert.ToString(matriz.CurrentRow.Cells[0].Value));
+
+            //invitadosBox.AppendText(conectados[fila] + Environment.NewLine);
+            //invitados.Add(conectados[fila]);
         }
 
-        private void invitar_Click_1(object sender, EventArgs e)
+        private void invitarBTN_Click(object sender, EventArgs e)
         {
-            string mensaje = "4/" + invitados[0];
-            MessageBox.Show(mensaje);
+            
+            for (int i = 0; i < invitados.Count; i++)
+            {
+                //message = invitados[i] + message;
+                message = string.Concat(invitados[i]);
+            }
+            
+            string mensaje = "4/" + message;
+            // Enviamos al servidor el nombre tecleado.
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+
         }
+
     }
 }
