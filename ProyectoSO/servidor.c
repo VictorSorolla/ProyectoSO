@@ -7,8 +7,15 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <pthread.h>
+#include <my_global.h>
 
+
+//-std=c99 `mysql_config --cflags --libs`
+	
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+int i;
+int sockets[100];
 
 typedef struct 
 {
@@ -125,7 +132,7 @@ void *AtenderCliente (ListaConectados * miLista)
 	}
 	//inicializar la conexion, entrando nuestras claves de acceso y
 	//el nombre de la base de datos a la que queremos acceder 
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", "bd",0, NULL, 0);
+	conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "M06_bd",0, NULL, 0);
 	if (conn==NULL) 
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
@@ -157,13 +164,13 @@ void *AtenderCliente (ListaConectados * miLista)
 		if (codigo ==0)
 		{
 			terminar=1;
-			pthread_mutex_lock(&mutex);
+			
 			int elim = Elimina(miLista,username);
 			if (elim == 0)
 				printf("Usuario eliminado de la lista de conectados\n");
 			else	
 				printf("Error al eliminar el usuario de la lista de conectados\n");
-			pthread_mutex_unlock( &mutex);
+			
 		}
 		
 		else if (codigo ==1) 
@@ -211,11 +218,16 @@ void *AtenderCliente (ListaConectados * miLista)
 						printf("Lista llena. No se pudo añadir el usuario a la lista de conectados.\n");
 					DameConectados(miLista,connected);
 					printf("Estos son los usuarios conectados actualmente: %s\n", connected);
-					strcpy(respuesta,"El usuario ha podido loguearse correctamente");
+					strcpy(respuesta,"1/El usuario ha podido loguearse correctamente");
 			}
 				
 				write (sock_conn,respuesta, strlen(respuesta));
 				pthread_mutex_unlock( &mutex);
+				char notificacion[20];
+				//sprintf (notificacion, "%d", contador);
+				int j;
+				for (j=0; j<i;j++)
+					write (sockets[j],notificacion, strlen(notificacion));
 		}
 		
 		else if (codigo == 2)
@@ -259,7 +271,7 @@ void *AtenderCliente (ListaConectados * miLista)
 					
 				printf("consulta = %s\n", consulta);
 					
-				strcpy(respuesta,"El usuario ha sido eliminado de la base de datos ");
+				strcpy(respuesta,"2/El usuario ha sido eliminado de la base de datos ");
 					
 				err = mysql_query(conn, consulta);
 				if (err!=0)
@@ -337,41 +349,11 @@ void *AtenderCliente (ListaConectados * miLista)
 			{
 					printf ("Username: %s\n", row[1]);
 					row = mysql_fetch_row (resultado);
-					strcpy(respuesta,"El usuario se ha REGISTRADO correctamente");
+					strcpy(respuesta,"3/El usuario se ha REGISTRADO correctamente");
 			}
 				
 				write (sock_conn,respuesta, strlen(respuesta));
 				
-		}
-		
-		else if (codigo == 4)
-		{
-			char usuarios[80];
-			printf("\n");
-			printf("Los usuarios que actualmente estan registrados son:\n");
-			err=mysql_query (conn, "SELECT * FROM Jugador");
-			if (err!=0) 
-			{
-				printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			
-			resultado = mysql_store_result (conn);
-			row = mysql_fetch_row (resultado);
-			strcpy(respuesta, "Los usuarios registrados son los siguientes: ");
-			
-			if (row == NULL)
-			{
-				printf ("No se han obtenido datos en la consulta\n");
-			}
-			else
-				while (row !=NULL) 
-			{
-					printf ("Username: %s\n", row[1]);
-					sprintf(respuesta,"%s%s,",respuesta,row[1]);
-					row = mysql_fetch_row (resultado);
-			}
-				write (sock_conn,respuesta, strlen(respuesta));
 		}
 	
 		else if (codigo == 5)
@@ -409,20 +391,19 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9100);
+	serv_adr.sin_port = htons(50068);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
 	if (listen(sock_listen, 3) < 0)
 		printf("Error en el Listen");
 	
-	int i;
-	int sockets[100];
+	
 	
 	pthread_t thread[10];
 	ListaConectados miLista;
 	i=0;
-	// Bucle para atender a 5 clientes
+	// Bucle infinito para atender a clientes
 	for (;;){
 		printf ("Escuchando\n");
 		
@@ -439,4 +420,3 @@ int main(int argc, char *argv[])
 		
 	}
 }
-//-std=c99 `mysql_config --cflags --libs`

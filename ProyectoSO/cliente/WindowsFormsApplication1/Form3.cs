@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
     public partial class Form3 : Form
     {
         public Socket server;
+        public string mensaje;
 
         public Form3()
         {
@@ -22,22 +23,13 @@ namespace WindowsFormsApplication1
 
         private void Form3_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-            string mensaje = "5/";
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
             // Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
+            string[] trozos = mensaje.Split('/');
             int codigo = Convert.ToInt32(trozos[0]);
-            mensaje = trozos[0].Split('\0')[0];
+            //mensaje = trozos[0].Split('\0')[0];
+            //mensaje = trozos[1].Split('/')[0];
+            //mensaje = trozos[1];
+
 
             matriz.ColumnCount = 2;
             matriz.RowCount = codigo;
@@ -51,7 +43,9 @@ namespace WindowsFormsApplication1
             while (i < codigo)
             {
                 string[] nombres = new string[10];
-                nombres[i] = trozos[1 + i];
+                nombres[i] = trozos[0];
+
+
 
                 matriz.Rows[i].Cells[0].Value = nombres[i];
                 matriz.Rows[i].Cells[1].Value = "Conectado";
@@ -59,6 +53,8 @@ namespace WindowsFormsApplication1
                 i++;
             }
         }
+
+ 
 
         private void label1_Click(object sender, EventArgs e)
         {
