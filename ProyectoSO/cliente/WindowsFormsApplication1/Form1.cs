@@ -28,8 +28,8 @@ namespace WindowsFormsApplication1
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 6900);
+            IPAddress direc = IPAddress.Parse("192.168.56.101");
+            IPEndPoint ipep = new IPEndPoint(direc, 9100);
             
 
             //Creamos el socket 
@@ -65,22 +65,6 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            string mensaje = "1/"+ Username.Text +"/"+ Password.Text;
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
-
-        }
-
-
         private void button5_Click(object sender, EventArgs e)
         {
             string mensaje = "2/" + Username.Text + "/" + Password.Text;
@@ -105,7 +89,7 @@ namespace WindowsFormsApplication1
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-
+            
             //Recibimos la respuesta del servidor
             byte[] msg2 = new byte[80];
             server.Receive(msg2);
@@ -113,8 +97,29 @@ namespace WindowsFormsApplication1
             MessageBox.Show(mensaje);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string mensaje = "1/" + Username.Text + "/" + Password.Text;
+            // Enviamos al servidor el nombre tecleado.
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            // Recibimos la respuesta del servidor.
+            byte[] msg2 = new byte[80];
+            server.Receive(msg2);
+            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+            MessageBox.Show(mensaje);
+
+            // Entramos en el "juego".
+            Form3 f3 = new Form3();
+            f3.server = server;
+            f3.ShowDialog();
+
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
+
             string mensaje = "4/";
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);

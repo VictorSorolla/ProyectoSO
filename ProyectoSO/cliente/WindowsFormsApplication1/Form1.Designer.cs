@@ -32,13 +32,13 @@
             this.Username = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +92,16 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Peticion";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(212, 296);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(165, 90);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "Ver Usuarios Registrados";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button2
             // 
@@ -152,16 +162,6 @@
             this.button3.Text = "desconectar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(212, 305);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(165, 90);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "Ver Usuarios Registrados";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 
