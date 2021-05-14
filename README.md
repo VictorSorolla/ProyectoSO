@@ -4,3 +4,4 @@ Versión 1 verificada por Jaskirat Singh
 Version 1 comunicada por Óscar Planas --> https://www.youtube.com/watch?v=ajG1TP0PV5I&ab_channel=ÓscarPlanas 
 Versión 2 generada por Óscar Planas
 Version 2 verificada por Victor Sorolla
+Version 2 comunicada por Jaskirat Singh --> https://www.youtube.com/watch?v=R3uwV3J5Ntg&ab_channel=JaskiratSingh
