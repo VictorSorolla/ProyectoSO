@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
     {
         public Socket server;
         public string mensaje;
+        List<string> invitados = new List<string>();
 
         public Form3()
         {
@@ -43,15 +44,16 @@ namespace WindowsFormsApplication1
             while (i < codigo)
             {
                 string[] nombres = new string[10];
-                nombres[i] = trozos[0];
-
+                nombres[i] = trozos[i+1];
 
 
                 matriz.Rows[i].Cells[0].Value = nombres[i];
                 matriz.Rows[i].Cells[1].Value = "Conectado";
 
                 i++;
+                matriz.Refresh();
             }
+            
         }
 
  
@@ -60,6 +62,21 @@ namespace WindowsFormsApplication1
         {
             Form4 f4 = new Form4();
             f4.ShowDialog();
+        }
+
+        private void matriz_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int fila = e.RowIndex;
+            invitadosBox.AppendText(Convert.ToString(matriz.CurrentRow.Cells[0].Value) + Environment.NewLine);
+            invitados.Add(Convert.ToString(matriz.CurrentRow.Cells[0].Value));
+        }
+
+        private void invitar_Click_1(object sender, EventArgs e)
+        {
+            string mensaje = "4/" + invitados[0];
+            MessageBox.Show(mensaje);
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
         }
     }
 }

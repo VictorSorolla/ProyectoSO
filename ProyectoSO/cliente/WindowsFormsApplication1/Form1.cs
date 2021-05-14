@@ -37,14 +37,15 @@ namespace WindowsFormsApplication1
                 //Recibimos mensaje del servidor
                 byte[] msg2 = new byte[80];
                 server.Receive(msg2);
-                string [] trozos = Encoding.ASCII.GetString(msg2).Split('/');
+                string [] trozos = Encoding.ASCII.GetString(msg2).Split('-');
                 int codigo = Convert.ToInt32(trozos[0]);
                 string mensaje = trozos[1].Split ('\0')[0];
 
                 switch (codigo)
                 {
                     //Loguear
-                    case 1: 
+                    case 1:
+                        MessageBox.Show(mensaje);
                             // Entramos en el "juego".
                             Form3 f3 = new Form3();
                             f3.server = server;
@@ -61,6 +62,10 @@ namespace WindowsFormsApplication1
                     case 3:
                             MessageBox.Show(mensaje);
                     break;
+
+                    case 4:
+                            MessageBox.Show(mensaje);
+                    break;
                 }
             }
         }
@@ -75,6 +80,7 @@ namespace WindowsFormsApplication1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.101");
+            //147.83.117.22
             IPEndPoint ipep = new IPEndPoint(direc, 9300);
             
 
@@ -105,6 +111,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
+
             //Mensaje de desconexión
             string mensaje = "0/";
         
@@ -116,7 +124,8 @@ namespace WindowsFormsApplication1
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
-
+            //Form3 f3 = new Form3();
+            //f3.matriz.Update();
         }
 
         private void button5_Click(object sender, EventArgs e)
