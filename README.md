@@ -12,3 +12,4 @@ Versión 4 generada por Victor Sorolla
 Versión 4 verificada por Jaskirat Singh
 Versión 4 comunicada por Óscar Planas --> https://youtu.be/o7zhC-Hgf2U
 Versión 5 generada por Óscar Planas
+Version 5 verificada por Victor Sorolla
