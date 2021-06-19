@@ -14,3 +14,6 @@ Versión 4 comunicada por Óscar Planas --> https://youtu.be/o7zhC-Hgf2U<br/><br
 Versión 5 generada por Óscar Planas<br/>
 Version 5 verificada por Victor Sorolla.<br/>
 Versión 5 comunicada por Jaskirat Singh --> https://youtu.be/lvPxhcxv0Jc <br/><br/>
+VersiónFinal generada por Jaskirat Singh<br/>
+Version 5 verificada por Óscar Planas<br/>
+Versión 5 comunicada por Victor Sorolla -->  <br/><br/>
